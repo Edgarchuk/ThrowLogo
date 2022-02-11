@@ -1,3 +1,22 @@
 [
-
+  {
+    "libraryIdentifier" : "325eafcd0cb23c5f5f617df683931ae2",
+    "format" : "model",
+    "displayName" : "abelha2.usdz"
+  },
+  {
+    "libraryIdentifier" : "86987e7c38f6776b9a9038d26260332a",
+    "format" : "image",
+    "displayName" : "gadget logo (1) (1).png"
+  },
+  {
+    "libraryIdentifier" : "56956b738339191d8ac62e169b312121",
+    "format" : "model",
+    "displayName" : "3d-model.usdz"
+  },
+  {
+    "libraryIdentifier" : "8e6d03bfb5a762b6c19e33d4ff8afacd",
+    "format" : "model",
+    "displayName" : "3d-model.usdz"
+  }
 ]
