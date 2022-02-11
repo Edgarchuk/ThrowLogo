@@ -20,7 +20,6 @@ class GameController {
                 } else {
                     currentModel = model.clone(recursive: true) as! HasPhysics
                     cameraAnchor.addChild(currentModel!)
-                    print(currentModel?.components)
                 }
                 lastDragPoint = value.location
             }
@@ -31,6 +30,16 @@ class GameController {
     }
     
     var currentModel: (Entity & HasPhysics)?
+    
+    let plane: HasAnchoring = {
+        var entity = ModelEntity(mesh: .generateBox(size: .init(100, 0.1, 100)),
+                                 materials: [OcclusionMaterial()])
+        
+        var anchor = try! Experience.loadBox()
+        anchor.children.removeAll()
+        anchor.addChild(entity)
+        return anchor
+    }()
     
     let model: Entity & HasPhysics = {
         var entity = (try! Experience.loadBox()).model! as! HasPhysics
@@ -53,12 +62,13 @@ class GameController {
         let arView = ARView(frame: .zero)
         cameraAnchor.position.z = -0.5
         arView.scene.anchors.append(cameraAnchor)
-        
         let configuration = ARWorldTrackingConfiguration()
 
         let sceneReconstruction: ARWorldTrackingConfiguration.SceneReconstruction = .mesh
         if ARWorldTrackingConfiguration.supportsSceneReconstruction(sceneReconstruction) {
             configuration.sceneReconstruction = sceneReconstruction
+        } else {
+            arView.scene.anchors.append(plane)
         }
 
         let frameSemantics: ARConfiguration.FrameSemantics = [.smoothedSceneDepth, .sceneDepth]
