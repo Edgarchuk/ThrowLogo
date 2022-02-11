@@ -18,5 +18,10 @@
     "libraryIdentifier" : "8e6d03bfb5a762b6c19e33d4ff8afacd",
     "format" : "model",
     "displayName" : "3d-model.usdz"
+  },
+  {
+    "libraryIdentifier" : "f3f6374dfe4124f99f82f1eb7f7ce3c6",
+    "format" : "model",
+    "displayName" : "logoboll.usdz"
   }
 ]

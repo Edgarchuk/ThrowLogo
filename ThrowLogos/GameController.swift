@@ -33,7 +33,7 @@ class GameController {
     var currentModel: (Entity & HasPhysics)?
     
     let model: Entity & HasPhysics = {
-        var entity = (try! Experience.loadBox()).logo! as! HasPhysics
+        var entity = (try! Experience.loadBox()).model! as! HasPhysics
         
         entity.physicsBody?.mode = .kinematic
         entity.collision?.mode = .default
@@ -54,7 +54,6 @@ class GameController {
         cameraAnchor.position.z = -0.5
         arView.scene.anchors.append(cameraAnchor)
         
-        arView.automaticallyConfigureSession = false
         let configuration = ARWorldTrackingConfiguration()
 
         let sceneReconstruction: ARWorldTrackingConfiguration.SceneReconstruction = .mesh
@@ -68,7 +67,7 @@ class GameController {
         }
         arView.session.run(configuration)
         arView.environment.sceneUnderstanding.options
-            .insert([.collision, .physics, .receivesLighting])
+            .insert([.collision, .physics, .receivesLighting, .occlusion])
         self.arView = arView
         return arView
     }
