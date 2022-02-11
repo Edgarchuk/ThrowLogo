@@ -34,7 +34,9 @@ class GameController {
     let plane: HasAnchoring = {
         var entity = ModelEntity(mesh: .generateBox(size: .init(100, 0.1, 100)),
                                  materials: [OcclusionMaterial()])
-        
+        entity.physicsBody = .init(massProperties: .default, material: .default, mode: .static)
+        entity.generateCollisionShapes(recursive: false)
+        entity.position.y = -0.1
         var anchor = try! Experience.loadBox()
         anchor.children.removeAll()
         anchor.addChild(entity)
